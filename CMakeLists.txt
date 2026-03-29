@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(db_engine
+    src/db/page.cpp
     src/db/pager.cpp
 )
 
@@ -13,12 +14,12 @@ target_include_directories(db_engine
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-add_executable(pager_test
-    tests/pager_test.cpp
+add_executable(page_test
+    tests/page_test.cpp
 )
 
-target_link_libraries(pager_test PRIVATE db_engine)
+target_link_libraries(page_test PRIVATE db_engine)
 
 include(CTest)
 enable_testing()
-add_test(NAME pager_test COMMAND pager_test)
+add_test(NAME page_test COMMAND page_test)
